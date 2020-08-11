@@ -1,10 +1,13 @@
 ### 0.8.0 (unreleased)
 
+Language Features:
+ * Super constructors can now be called using the member notation e.g.  ``M.C(123)``.
 
 
 ### 0.7.2 (unreleased)
 
 Language Features:
+ * Allow function definitions outside of contracts, behaving much like internal library functions.
 
 
 Compiler Features:

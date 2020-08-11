@@ -912,7 +912,7 @@ ASTPointer<ModifierInvocation> Parser::parseModifierInvocation()
 {
 	RecursionGuard recursionGuard(*this);
 	ASTNodeFactory nodeFactory(*this);
-	ASTPointer<Identifier> name(parseIdentifier());
+	ASTPointer<UserDefinedTypeName> name(parseUserDefinedTypeName());
 	unique_ptr<vector<ASTPointer<Expression>>> arguments;
 	if (m_scanner->currentToken() == Token::LParen)
 	{

@@ -351,6 +351,9 @@ bool TypeChecker::visit(FunctionDefinition const& _function)
 	if (_function.overrides() && _function.isFree())
 		m_errorReporter.syntaxError(1750_error, _function.location(), "Free functions cannot override.");
 
+	if (!_function.modifiers().empty() && _function.isFree())
+		m_errorReporter.syntaxError(5811_error, _function.location(), "Free functions cannot have modifiers.");
+
 	if (_function.isPayable())
 	{
 		if (_function.libraryFunction())
@@ -3094,6 +3097,12 @@ bool TypeChecker::visit(Identifier const& _identifier)
 		}
 
 	return false;
+}
+
+void TypeChecker::endVisit(UserDefinedTypeName const& _userDefinedTypeName)
+{
+	if (!_userDefinedTypeName.annotation().type)
+		_userDefinedTypeName.annotation().type = _userDefinedTypeName.annotation().referencedDeclaration->type();
 }
 
 void TypeChecker::endVisit(ElementaryTypeNameExpression const& _expr)

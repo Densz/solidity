@@ -4,10 +4,10 @@
   {
     "C":
     [
-      14
+      15
     ]
   },
-  "id": 15,
+  "id": 16,
   "nodeType": "SourceUnit",
   "nodes":
   [
@@ -17,10 +17,10 @@
       "contractDependencies": [],
       "contractKind": "contract",
       "fullyImplemented": true,
-      "id": 14,
+      "id": 15,
       "linearizedBaseContracts":
       [
-        14
+        15
       ],
       "name": "C",
       "nodeType": "ContractDefinition",
@@ -89,13 +89,13 @@
         {
           "body":
           {
-            "id": 12,
+            "id": 13,
             "nodeType": "Block",
             "src": "64:2:1",
             "statements": []
           },
           "functionSelector": "28811f59",
-          "id": 13,
+          "id": 14,
           "implemented": true,
           "kind": "function",
           "modifiers":
@@ -105,7 +105,7 @@
               [
                 {
                   "hexValue": "31",
-                  "id": 9,
+                  "id": 10,
                   "isConstant": false,
                   "isLValue": false,
                   "isPure": true,
@@ -121,13 +121,19 @@
                   "value": "1"
                 }
               ],
-              "id": 10,
+              "id": 11,
               "modifierName":
               {
-                "id": 8,
-                "name": "M",
-                "nodeType": "Identifier",
-                "overloadedDeclarations": [],
+                "id": 9,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode":
+                {
+                  "id": 8,
+                  "name": "M",
+                  "nodeType": "InheritanceSpecifier",
+                  "referencedDeclaration": 6,
+                  "src": "52:1:1"
+                },
                 "referencedDeclaration": 6,
                 "src": "52:1:1",
                 "typeDescriptions":
@@ -151,19 +157,19 @@
           },
           "returnParameters":
           {
-            "id": 11,
+            "id": 12,
             "nodeType": "ParameterList",
             "parameters": [],
             "src": "64:0:1"
           },
-          "scope": 14,
+          "scope": 15,
           "src": "39:27:1",
           "stateMutability": "nonpayable",
           "virtual": false,
           "visibility": "public"
         }
       ],
-      "scope": 15,
+      "scope": 16,
       "src": "0:68:1"
     }
   ],
