@@ -936,6 +936,13 @@ ASTPointer<Identifier> Parser::parseIdentifier()
 
 ASTPointer<UserDefinedTypeName> Parser::parseUserDefinedTypeName()
 {
+	ASTNodeFactory nodeFactory(*this);
+	nodeFactory.markEndPosition();
+	return nodeFactory.createNode<UserDefinedTypeName>(parseIdentifierPath());
+}
+
+ASTPointer<IdentifierPath> Parser::parseIdentifierPath()
+{
 	RecursionGuard recursionGuard(*this);
 	ASTNodeFactory nodeFactory(*this);
 	nodeFactory.markEndPosition();
@@ -946,7 +953,7 @@ ASTPointer<UserDefinedTypeName> Parser::parseUserDefinedTypeName()
 		nodeFactory.markEndPosition();
 		identifierPath.push_back(*expectIdentifierToken());
 	}
-	return nodeFactory.createNode<UserDefinedTypeName>(identifierPath);
+	return nodeFactory.createNode<IdentifierPath>(identifierPath);
 }
 
 ASTPointer<TypeName> Parser::parseTypeNameSuffix(ASTPointer<TypeName> type, ASTNodeFactory& nodeFactory)
@@ -2087,7 +2094,7 @@ ASTPointer<TypeName> Parser::typeNameFromIndexAccessStructure(Parser::IndexAcces
 		vector<ASTString> path;
 		for (auto const& el: _iap.path)
 			path.push_back(dynamic_cast<Identifier const&>(*el).name());
-		type = nodeFactory.createNode<UserDefinedTypeName>(path);
+		type = nodeFactory.createNode<UserDefinedTypeName>(nodeFactory.createNode<IdentifierPath>(path));
 	}
 	for (auto const& lengthExpression: _iap.indices)
 	{
